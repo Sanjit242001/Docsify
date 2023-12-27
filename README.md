@@ -219,3 +219,30 @@ git push origin main
 ```bash
 https://github.com/Sanjit242001/Docsify.git
 ```
+
+## List of Pluings ##
+
+  **Emoji**
+
+- Renders a larger collection of emoji shorthand codes. Without this plugin, Docsify is able to render only a limited number of emoji shorthand codes.
+
+- Deprecated as of v4.13. Docsify no longer requires this plugin for full emoji support.
+
+```bash
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+```
+
+**External Script**
+
+- If the script on the page is an external one (imports a js file via src attribute), you'll need this plugin to make it work.
+
+```bash
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+```
+**Zoom image**
+
+- Medium's image zoom. Based on medium-zoom.
+
+```bash
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+```
