@@ -1,5 +1,5 @@
 ## Introduction Of Docsify
-Docsify is a tool that helps you easily make documentation websites using simple text (Markdown). It makes your documentation look nice, with features like easy navigation, search, and different themes. To use it, you install Docsify on your computer and follow a few quick steps to set up your documentation.
+>Docsify is a tool that helps you easily make documentation websites using simple text (Markdown). It makes your documentation look nice, with features like easy navigation, search, and different themes. To use it, you install Docsify on your computer and follow a few quick steps to set up your documentation.
 
 ## Docsify Setup
 
@@ -18,13 +18,11 @@ Docsify is a tool that helps you easily make documentation websites using simple
 - PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 - UBUNTU_CODENAME=jammy
 
+## Requirement Tools ##
 
-## Requirement Tools
+>Node.js<br>
 
-
-**Node.js**
-
-**NPM**
+>NPM
 
 ## Node.js ##
 
@@ -96,7 +94,6 @@ docsify-cli version:
 sudo mkdir Docsify
 ```
 
-
 >Change Directory
 
 ```bash
@@ -110,34 +107,27 @@ sanjit@sanjit:~/Desktop/Docsify$
 ```
 ## Initialize ##
 ```bash
-docsify init .
+docsify init ./docs
 ```
 >Output
 ```bash
-Initialization succeeded! Please run docsify serve
+Initialization succeeded! Please run docsify serve ./docs
 ```
 ## Preview your site ##
 
 >Run the local server with docsify serve. You can preview your site in your browser on http://localhost:3000.
 
 ```bash
-docsify serve 
+docsify serve docs
 ```
 >Output
 ```bash
 Serving /home/sanjit/docs now.
 Listening at http://localhost:3000
 ```
-## Markdown ##
->Alternatively, you can create a custom markdown-based navigation file by setting loadNavbar to true and creating _navbar.md, compare loadNavbar configuration.
+## Markdown Usage ##
 
-<!-- index.html -->
 
-`<script>
-  window.$docsify = {
-    loadNavbar: true
-  }
-</script>`
 
 ## Navigation and Sidebar ##
 
@@ -145,43 +135,95 @@ Listening at http://localhost:3000
 
 **Navigation:**
 
-- Configuration:
+>Alternatively, you can create a custom markdown-based navigation file by setting loadNavbar to true and creating _navbar.md, compare loadNavbar configuration.
 
-- - Use the `nav` option in Docsify's settings.
-- - Example: Customize the top navigation bar with specific links like Home, Guide, and API.
+<!-- index.html -->
+
+```bash
+<script>
+  window.$docsify = {
+    loadNavbar: true
+  }
+</script>
+```
 
 **Sidebar:**
 
-- Configuration:
-- - Use the `sidebar` option to structure the sidebar.
-- - Example: Define the order and hierarchy of sections like Home, Guide, and API.
+>In order to have a sidebar, you can create your own _sidebar.md (see this documentation's sidebar for an example):
 
-## Configuring and enabling the search functionality in Docsify: ##
+>First, you need to set loadSidebar to true. Details are available in the configuration paragraph.
 
->Enabling search functionality in Docsify involves a few simple steps:
->1.Configuration:
+<!-- index.html -->
 
-- - Open your Docsify configuration file (often named `index.html`).
-- - Locate the configuration section.
-- - Add a few settings for search, such as setting the cache duration and specifying paths to search.
-  
->2.Search Box:
+```bash
+<script>
+  window.$docsify = {
+    loadSidebar: true
+  }
+</script>
+```
 
-- - After enabling search, a search box will appear, typically in the top right corner of your documentation site.
+## Configuration ##
 
->3.User Interaction:
+>You can configure Docsify by defining window.$docsify as an object:
 
-- - Users can type search queries into the search box.
+```bash
+script>
+  window.$docsify = {
+    repo: 'docsifyjs/docsify',
+    maxLevel: 3,
+    coverpage: true,
+  };
+</script>
+```
 
->4.Dynamic Results:
+>The config can also be defined as a function, in which case the first argument is the Docsify vm instance. The function should return a config object. This can be useful for referencing vm in places like the markdown configuration:
 
-- - As users enter more characters, Docsify will display dynamic results below the search box.
+```bash
+<script>
+  window.$docsify = function (vm) {
+    return {
+      markdown: {
+        renderer: {
+          code(code, lang) {
+            // ... use `vm` ...
+          },
+        },
+      },
+    };
+  };
+</script>
+```
 
-> Navigation:
+### alias ###
 
-- - Users can click on search results to navigate directly to the corresponding section of your documentation.
+- Type: `Object`
 
-## How to integrate Docsify with GitHub: ##
+>Set the route alias. You can freely manage routing rules. Supports RegExp. Do note that order matters! If a route can be matched by multiple aliases, the one you declared first takes precedence.
+
+```bash
+window.$docsify = {
+  alias: {
+    '/foo/(.*)': '/bar/$1', // supports regexp
+    '/zh-cn/changelog': '/changelog',
+    '/changelog':
+      'https://raw.githubusercontent.com/docsifyjs/docsify/master/CHANGELOG',
+    '/.*/_sidebar.md': '/_sidebar.md', // See #301
+  },
+};
+```
+## Themes ##
+
+>There is a handful of themes available, both official and community-made. Copy Vue and buble website custom theme and @liril-net contribution to the theme of the black style.
+
+```bash
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css" />
+
+```
+## How to integrate Docsify with GitHub : ##
 
 >Install Git
 
