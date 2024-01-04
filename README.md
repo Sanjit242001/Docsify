@@ -125,10 +125,36 @@ docsify serve docs
 Serving /home/sanjit/docs now.
 Listening at http://localhost:3000
 ```
-## Markdown Usage ##
+## Markdown configuration ##
 
+>docsify uses marked as its Markdown parser. You can customize how it renders your Markdown content to HTML by customizing renderer:
 
+```bash
+window.$docsify = {
+  markdown: {
+    smartypants: true,
+    renderer: {
+      link: function() {
+        // ...
+      }
+    }
+  }
+}
+```
 
+>Configuration Options Reference: marked documentation
+
+>You can completely customize the parsing rules.
+
+```bash
+window.$docsify = {
+  markdown: function(marked, renderer) {
+    // ...
+
+    return marked
+  }
+}
+```
 ## Navigation and Sidebar ##
 
 >In Docsify, navigation and the sidebar are essential for organizing and presenting your documentation effectively.
