@@ -110,27 +110,34 @@ sanjit@sanjit:~/Desktop/Docsify$
 ```
 ## Initialize ##
 ```bash
-docsify init ./docs
+docsify init .
 ```
 >Output
 ```bash
-Initialization succeeded! Please run docsify serve ./docs
+Initialization succeeded! Please run docsify serve
 ```
 ## Preview your site ##
 
 >Run the local server with docsify serve. You can preview your site in your browser on http://localhost:3000.
 
 ```bash
-docsify serve docs
+docsify serve 
 ```
 >Output
 ```bash
 Serving /home/sanjit/docs now.
 Listening at http://localhost:3000
 ```
-## Markdown Usage ##
+## Markdown ##
+>Alternatively, you can create a custom markdown-based navigation file by setting loadNavbar to true and creating _navbar.md, compare loadNavbar configuration.
 
->Docsify uses Markdown to format your documentation content. Markdown is a simple and easy-to-read language for styling plain text.
+<!-- index.html -->
+
+`<script>
+  window.$docsify = {
+    loadNavbar: true
+  }
+</script>`
 
 ## Navigation and Sidebar ##
 
