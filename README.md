@@ -107,7 +107,7 @@ sanjit@sanjit:~/Desktop/Docsify$
 ```
 ## Initialize ##
 ```bash
-docsify init ./docs
+docsify init .
 ```
 >Output
 ```bash
@@ -118,7 +118,7 @@ Initialization succeeded! Please run docsify serve ./docs
 >Run the local server with docsify serve. You can preview your site in your browser on http://localhost:3000.
 
 ```bash
-docsify serve docs
+docsify serve
 ```
 >Output
 ```bash
