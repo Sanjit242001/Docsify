@@ -111,7 +111,7 @@ docsify init .
 ```
 >Output
 ```bash
-Initialization succeeded! Please run docsify serve ./docs
+Initialization succeeded! Please run docsify serve .
 ```
 ## Preview your site ##
 
